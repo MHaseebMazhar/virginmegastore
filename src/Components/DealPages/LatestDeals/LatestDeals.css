@@ -1,26 +1,38 @@
-.best-tech-deals-container {
+.latest-deals-container {
   max-width: 90vw;
   margin: 0 auto;
   padding: 40px 0;
   background: #fff;
 }
 
-.best-tech-deals-title {
+.latest-deals-title {
   text-align: center;
   font-weight: bold;
   font-size: 2rem;
   margin-bottom: 32px;
 }
 
-.best-tech-deals-list {
+.slider {
+  position: relative;
   display: flex;
-  gap: 32px;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 
-.best-tech-deal-card {
-  width: 240px;
+.slider-wrapper {
+  overflow: hidden;
+  width: 80%;
+  max-width: 80%;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.latest-deal-card {
+  flex: 0 0 calc(100% / 5);
   background: #fff;
   padding: 0 0 16px 0;
   border-radius: 8px;
@@ -28,9 +40,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  text-align: left;
+  margin: 0 8px;
 }
 
-.best-tech-deal-img {
+.latest-deal-img {
   height: 220px;
   width: 100%;
   display: flex;
@@ -39,13 +53,13 @@
   margin-bottom: 8px;
 }
 
-.best-tech-deal-img img {
+.latest-deal-img img {
   max-width: 100%;
   max-height: 100%;
   border-radius: 8px;
 }
 
-.best-tech-deal-brand {
+.latest-deal-brand {
   color: #888;
   font-size: 13px;
   font-weight: 600;
@@ -53,7 +67,7 @@
   margin-left: 8px;
 }
 
-.best-tech-deal-title {
+.latest-deal-title {
   font-weight: 500;
   font-size: 16px;
   margin-bottom: 8px;
@@ -61,14 +75,14 @@
   margin-left: 8px;
 }
 
-.best-tech-deal-card hr {
+.latest-deal-card hr {
   width: 90%;
   margin: 8px auto;
   border: none;
   border-top: 1px solid #eee;
 }
 
-.best-tech-deal-prices {
+.latest-deal-prices {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -92,12 +106,12 @@
   margin-left: 8px;
 }
 
-.best-tech-deals-btn-container {
+.latest-deals-btn-container {
   text-align: center;
   margin-top: 32px;
 }
 
-.best-tech-deals-btn {
+.latest-deals-btn {
   padding: 12px 32px;
   border: 2px solid #000;
   background: #fff;
@@ -107,39 +121,10 @@
   border-radius: 4px;
 }
 
-.best-tech-deals-divider {
+.latest-deals-divider {
   margin-top: 40px;
   border: none;
   border-top: 1px solid #eee;
-}
-/* Add to: c:\Users\israr\Desktop\virginmegastore\virginmegastore\src\Components\DealPages\BestTechDeals\BestTechDeals.css */
-
-/* Slider styles */
-.slider {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-.slider-wrapper {
-  overflow: hidden;
-  width: 80%;
-  max-width: 80%;
-}
-
-.slider-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-/* Show 5 items per slide */
-.deal-card {
-  flex: 0 0 calc(100% / 5);
-  text-align: center;
-  padding: 10px;
-  box-sizing: border-box;
 }
 
 /* Arrows */
@@ -170,13 +155,13 @@
 
 /* Responsive */
 @media (max-width: 900px) {
-  .deal-card {
+  .latest-deal-card {
     flex: 0 0 calc(100% / 2);
   }
 }
 
 @media (max-width: 600px) {
-  .deal-card {
+  .latest-deal-card {
     flex: 0 0 100%;
   }
 }

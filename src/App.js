@@ -9,6 +9,8 @@ import  PCGamingDeals from './Components/DealPages/PCGamingDeals/PCGamingDeals';
 import LifeStyleDeals from './Components/DealPages/LifeStyleDeals/LifeStyleDeals';
 import Trending from './Components/DealPages/Trending/Trending';
 import TechDeals from './Components/DealPages/TechDeals/TechDeals';
+import BestTechDeals from './Components/DealPages/BestTechDeals/BestTechDeals';
+import LatestDeals from './Components/DealPages/LatestDeals/LatestDeals';
 import Footer from './Components/DealPages/Footer/Footer';
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
       <LifeStyleDeals />
       <Trending />
       <TechDeals />
+      <BestTechDeals />
+      <LatestDeals />
       <Footer />
     </div>
   );
