@@ -1,25 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
-
+import React from 'react';
+import Header from './Components/DealPages/Header/Header';
+import Deals from './Components/DealPages/Deals/Deals';
+import StationeryDeals from './Components/DealPages/StationeryDeals/StationeryDeals';
+import SaveBigMobile from './Components/DealPages/SaveBigMobile/SaveBigMobile';
+import GamingDeals from './Components/DealPages/GamingDeals/GamingDeals';
+import  PCGamingDeals from './Components/DealPages/PCGamingDeals/PCGamingDeals';
+import LifeStyleDeals from './Components/DealPages/LifeStyleDeals/LifeStyleDeals';
+import Trending from './Components/DealPages/Trending/Trending';
+import TechDeals from './Components/DealPages/TechDeals/TechDeals';
+import Footer from './Components/DealPages/Footer/Footer';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Deals />
+      <StationeryDeals />
+      <SaveBigMobile />
+      <GamingDeals />
+      <PCGamingDeals />
+      <LifeStyleDeals />
+      <Trending />
+      <TechDeals />
+      <Footer />
     </div>
   );
 }
-
 export default App;

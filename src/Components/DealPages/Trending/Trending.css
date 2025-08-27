@@ -1,0 +1,134 @@
+.deals-container {
+  padding: 40px 20px;
+  background: #fff;
+  text-align: center;
+}
+
+.deals-container h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* Slider */
+.slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.slider-wrapper {
+  overflow: hidden;
+  width: 80%;
+  max-width: 80%;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Each product card */
+.deal-card {
+  flex: 0 0 calc(100% / 5); /* show 3 items per slide */
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.deal-card img {
+  width: 250px;
+  background-color: #999;
+  height: 250px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.brand {
+  font-size: 13px;
+  font-weight: bold;
+  color: #666;
+}
+
+.deal-card h3 {
+  font-size: 14px;
+  font-weight: normal;
+  color: #333;
+  margin: 8px 0;
+}
+
+.price {
+  margin-top: 5px;
+}
+
+.new-price {
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.old-price {
+  font-size: 14px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+/* Arrows */
+.arrow {
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: #333;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: color 0.3s;
+  z-index: 2;
+}
+
+.arrow:hover {
+  color: #000;
+}
+
+.arrow.left {
+  left: 10%;
+}
+
+.arrow.right {
+  right: 10%;
+}
+
+/* Button */
+.btn-container {
+  margin-top: 20px;
+}
+
+.btn-container button {
+  padding: 10px 25px;
+  border: 1px solid #000;
+  background: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-container button:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .deal-card {
+    flex: 0 0 calc(100% / 2); /* show 2 on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .deal-card {
+    flex: 0 0 100%; /* show 1 on mobile */
+  }
+}

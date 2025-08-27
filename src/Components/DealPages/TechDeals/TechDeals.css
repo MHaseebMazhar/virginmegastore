@@ -1,0 +1,45 @@
+.deals-container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Breadcrumb (optional if you want text later) */
+.breadcrumb {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+
+/* Section Title */
+.section-title {
+  font-size: 20px;
+  margin: 20px 0;
+  font-weight: bold;
+}
+/* Category Grid */
+.category-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+
+.category-card {
+  text-align: center;
+  width: 120px;
+}
+
+
+.circle img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.category-card p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 25px;
+}
