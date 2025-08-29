@@ -1,0 +1,167 @@
+.popular-deals-container {
+ 
+  margin: 0 auto;
+  padding: 40px 0;
+  background: #fff;
+}
+
+.popular-deals-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 32px;
+}
+
+.slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.slider-wrapper {
+  overflow: hidden;
+  width: 80%;
+  max-width: 80%;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.popular-deal-card {
+  flex: 0 0 calc(100% / 5);
+  background: #fff;
+  padding: 0 0 16px 0;
+ 
+  
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  margin: 0 8px;
+}
+
+.popular-deal-img {
+  height: 30vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.popular-deal-img img {
+  max-width: 100%;
+  max-height: 100%;
+  
+}
+
+.popular-deal-brand {
+  color: #888;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  margin-left: 8px;
+}
+
+.popular-deal-title {
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 8px;
+  min-height: 48px;
+  margin-left: 8px;
+}
+
+.popular-deal-card hr {
+  width: 90%;
+  margin: 8px auto;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+.popular-deal-prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+}
+
+.aed-label {
+  color: #888;
+  font-size: 13px;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.old-price {
+  color: #888;
+  font-size: 15px;
+  text-decoration: line-through;
+  margin-left: 8px;
+}
+
+.popular-deals-btn-container {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.popular-deals-btn {
+  padding: 12px 32px;
+  border: 2px solid #000;
+  background: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.popular-deals-divider {
+  margin-top: 40px;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+/* Arrows */
+.arrow {
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: #333;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: color 0.3s;
+  z-index: 2;
+}
+
+.arrow:hover {
+  color: #000;
+}
+
+.arrow.left {
+  left: 10%;
+}
+
+.arrow.right {
+  right: 10%;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .popular-deal-card {
+    flex: 0 0 calc(100% / 2);
+  }
+}
+
+@media (max-width: 600px) {
+  .popular-deal-card {
+    flex: 0 0 100%;
+  } 
+}

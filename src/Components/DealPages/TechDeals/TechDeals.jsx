@@ -22,7 +22,7 @@ export default function TechDeals() {
 
    
       {/* Categories */}
-      <h3 className="section-title">Lifestyle Deals</h3>
+      <h3 className="section-title">Tech Deals</h3>
 
       
       <div className="category-grid">

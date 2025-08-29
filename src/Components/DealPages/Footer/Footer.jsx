@@ -9,7 +9,6 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-top">
-        
         {/* Social Links */}
         <div className="footer-section">
           <h3>Connect with us</h3>
@@ -21,9 +20,7 @@ export default function Footer() {
             <FaWhatsapp />
           </div>
         </div>
-
-        {/* Keep in touch */}
-        <FooterColumn 
+        <FooterColumn
           title="Keep in touch"
           links={[
             "Contact Us",
@@ -33,9 +30,7 @@ export default function Footer() {
             "Virgin Megastore Career"
           ]}
         />
-
-        {/* Also in store */}
-        <FooterColumn 
+        <FooterColumn
           title="Also in store"
           links={[
             "Virgin Megastore Circle",
@@ -48,9 +43,7 @@ export default function Footer() {
             "Virgin Mobile UAE"
           ]}
         />
-
-        {/* Got questions */}
-        <FooterColumn 
+        <FooterColumn
           title="Got questions?"
           links={[
             "Live Personal Shopper",
@@ -66,7 +59,6 @@ export default function Footer() {
         />
       </div>
 
-      {/* Bottom */}
       <div className="footer-bottom">
         <div className="bottom-section">
           <p>Shipments delivered via</p>
@@ -75,25 +67,24 @@ export default function Footer() {
             <img src="/Swftbox-shipping-logo.svg" alt="Swftbox" />
           </div>
         </div>
-
         <div className="bottom-section">
           <p>Ways to pay</p>
           <div className="logos">
-            <img src="/Virgin-Megastore-Footer-Payment-methods-1.svg" alt="Visa" />  
+            <img src="/Virgin-Megastore-Footer-Payment-methods-1.svg" alt="Visa" />
           </div>
-     
-
         </div>
-
-             <div className="bottom-section">
-  <CountrySelector />
-</div>
+        <div className="bottom-section">
+          <p>Country Selector</p>
+          <CountrySelector />
+        </div>
       </div>
 
-      {/* App store */}
-      <div className="app-links">
-        <img src="/Download-Badge-App-Store.png" alt="App Store" />
-        <img src="/Download-Badge-Google-Play.png" alt="Google Play" />
+      <div className="footer-app-row">
+        <div className="more-ways">More ways to Shop</div>
+        <div className="app-links">
+          <img src="/Download-Badge-App-Store.png" alt="App Store" />
+          <img src="/Download-Badge-Google-Play.png" alt="Google Play" />
+        </div>
       </div>
 
       <div className="footer-copy">
