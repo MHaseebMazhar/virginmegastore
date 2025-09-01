@@ -19,7 +19,8 @@ import Circle from "../Circle/Circle";
 import {Routes, Route } from "react-router-dom";
 import TechDeals from "../DealPages/TechDeals/TechDeals";
 import BestTechDeals from "../DealPages/BestTechDeals/BestTechDeals";
-import ProductPage from "../Tech/ProductPages/Product/ProductPage";
+import ProductPage from "../Tech/ProductPages/Product/Product/ProductPage";
+import SimilarProducts from "../Tech/ProductPages/Product/SimilarProduct/SimilarProduct";
 function AllPages() {
   return (
     
@@ -41,7 +42,8 @@ function AllPages() {
         <Route path="/ideas" element={<Ideas />} />
         <Route path="/tickets" element={<Tickets />} />
         <Route path="/circle" element={<Circle />} />
-        <Route path="/product/:id" element={<ProductPage />} />
+        <Route path="/product/:id" element={<><ProductPage /><SimilarProducts /></>} />
+        <Route path="/similar-products" element={<SimilarProducts />} />
 
       </Routes>
       
