@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import { FaSearch } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
   const menuItems = [
@@ -24,10 +24,9 @@ export default function Header() {
     { label: "Circle", path: "/circle" },
   ];
 
-  const navigate = useNavigate();
-
   return (
     <header>
+      {/* Top Header */}
       <div className="header-top">
         <div className="logo">
           <img src="/Virgin-Red-Logo.svg" alt="Virgin Megastore" />
@@ -38,19 +37,24 @@ export default function Header() {
         </div>
         <div className="header-icons">
           <img src="user.png" alt="Circle" className="icon" />
-          <img src="icon-chat-help.svg" alt="Circle" className="icon" />
-          <img src="icon-cart.svg" alt="Circle" className="icon" />
+          <img src="icon-chat-help.svg" alt="Help" className="icon" />
+          <img src="icon-cart.svg" alt="Cart" className="icon" />
         </div>
       </div>
+
+      {/* NavBar */}
       <nav className="nav-bar">
         <ul>
           {menuItems.map((item, index) => (
-            <li
-              key={index}
-              onClick={() => navigate(item.path)}
-              style={{ cursor: "pointer" }}
-            >
-              {item.label}
+            <li key={index}>
+              <NavLink
+                to={item.path}
+                className={({ isActive }) =>
+                  isActive ? "active-link" : undefined
+                }
+              >
+                {item.label}
+              </NavLink>
             </li>
           ))}
         </ul>

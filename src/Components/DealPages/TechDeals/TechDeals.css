@@ -43,3 +43,21 @@
   font-weight: bold;
   margin-top: 25px;
 }
+.category-card {
+  text-align: center;
+  width: 120px;
+  text-decoration: none;   /* remove underline */
+  color: black;            /* keep normal text color */
+  transition: transform 0.2s ease;
+}
+
+.category-card:hover {
+  transform: scale(1.05);  /* slight zoom on hover */
+}
+
+.circle img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 50%;
+}
