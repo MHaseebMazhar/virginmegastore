@@ -2,148 +2,247 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import "./ProductPage.css";
 
+// ✅ Product Data
 const products = {
   "apple-airpods-pro": {
-    id: "apple-airpods-pro",
+    brand: "APPLE",
     name: "Apple AirPods Pro (2nd generation) True Wireless Earbuds with MagSafe Case (USB-C)",
-    brand: "Apple",
-    model: "MTJV3ZE/A",
     price: 859,
     oldPrice: 949,
-    images: ["/1.jpg", "/1.jpg", "/1.jpg", "/1.jpg"],
-    description: `AirPods Pro feature up to 2x more Active Noise Cancellation,
-    Transparency mode, and now Adaptive Audio. Personalized Spatial Audio
-    with dynamic head tracking immerses you in sound.`,
-    reviews: 46,
-    rating: 4.6,
-    loyalty: 859,
+    images: ["/1.jpg", "/2.jpg", "/3.jpg"],
+    description:
+      "AirPods Pro feature up to 2x more Active Noise Cancellation, Transparency mode, and now Adaptive Audio which automatically tailors the noise control for you.",
   },
   "bose-headphones": {
-    id: "bose-headphones",
-    name: "BOSE Headphones 700 Wireless Over-Ear Noise Cancelling",
     brand: "BOSE",
-    model: "794297-0100",
-    price: 1599,
-    oldPrice: 1799,
-    images: ["/2.jpg", "/2.jpg"],
+    name: "Bose QuietComfort Ultra Headphones - Black",
+    price: 1199,
+    oldPrice: 1699,
+    images: ["/2.jpg", "/1.jpg"],
     description:
-      " Wireless headphones with powerful noise cancellation, touch controls, and clear call quality. Perfect for travel and work.",
-    reviews: 28,
-    rating: 4.8,
-    loyalty: 1599,
+      "Bose QuietComfort Ultra Headphones deliver immersive sound with adaptive noise cancellation and premium comfort.",
   },
   "samsung-s24": {
-    id: "samsung-s24",
-    name: "Samsung Galaxy S24 Ultra 5G Dual SIM",
-    brand: "Samsung",
-    model: "SM-S928BZKDEUE",
-    price: 5299,
-    oldPrice: 5699,
-    images: ["/3.jpg", "/3.jpg"],
+    brand: "SAMSUNG",
+    name: "Samsung Galaxy S24 Ultra 5G Smartphone 12GB/256GB",
+    price: 2899,
+    oldPrice: 5099,
+    images: ["/3.jpg", "/1.jpg"],
     description:
-      " Samsung’s flagship smartphone with Snapdragon 8 Gen 3, quad camera system, and S-Pen support.",
-    reviews: 122,
-    rating: 4.7,
-    loyalty: 5299,
+      "The Galaxy S24 Ultra brings next-gen performance, AI features, and pro-grade camera system in a sleek design.",
   },
   "gopro-13": {
-    id: "gopro-13",
-    name: "GoPro HERO13 Black 5.3K Ultra HD Action Camera",
-    brand: "GoPro",
-    model: "CHDHX-131-RW",
-    price: 1999,
-    oldPrice: 2299,
-    images: ["/4.jpg", "/4.jpg"],
+    brand: "GOPRO",
+    name: "GoPro Hero 13 Action Camera - Accessory Bundle",
+    price: 1525,
+    oldPrice: 1889,
+    images: ["/4.jpg", "/2.jpg"],
     description:
-      "The most powerful GoPro yet with 5.3K video, HyperSmooth stabilization, and waterproof up to 10m.",
-    reviews: 64,
-    rating: 4.9,
-    loyalty: 1999,
+      "The GoPro Hero 13 is the ultimate action camera with 5.3K video, HyperSmooth stabilization and rugged durability.",
   },
   "insta360-x5": {
-    id: "insta360-x5",
-    name: "Insta360 X5 8K 360° Camera",
-    brand: "Insta360",
-    model: "CINOSXX/A",
-    price: 2499,
-    oldPrice: 2699,
-    images: ["/5.jpg", "/5.jpg"],
+    brand: "INSTA360",
+    name: "Insta360 X5 360 Action Camera - Black",
+    price: 2019,
+    oldPrice: 2169,
+    images: ["/5.jpg", "/3.jpg"],
     description:
-      "Capture everything in 8K 360°. Perfect for vlogging, travel, and immersive content creation.",
-    reviews: 31,
-    rating: 4.5,
-    loyalty: 2499,
+      "Insta360 X5 lets you capture everything in 360°, with incredible stabilization and up to 8K resolution.",
   },
 };
 
-export default function ProductPage() {
+const ProductPage = () => {
   const { id } = useParams();
   const product = products[id];
-  const [selectedImage, setSelectedImage] = useState(product.images[0]);
-  const [qty, setQty] = useState(1);
 
-  if (!product) return <h2>Product not found</h2>;
+  const [quantity, setQuantity] = useState(1);
+  const [selectedWarranty, setSelectedWarranty] = useState(null);
+  const [selectedAccidental, setSelectedAccidental] = useState(null);
+  const [selectedBundle, setSelectedBundle] = useState(null);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  if (!product) {
+    return <h2>Product not found!</h2>;
+  }
+
+  // Loyalty calculation
+  const loyaltyPointsPerItem = product.price;
+  const loyaltyAedPerItem = product.price * 0.01;
+  const loyaltyPoints = quantity * loyaltyPointsPerItem;
+  const loyaltyAed = (quantity * loyaltyAedPerItem).toFixed(2);
+
+  // Warranty options
+  const extendedWarrantyOptions = [
+    { label: "1 Year", price: 67 },
+    { label: "2 Years", price: 100 },
+    { label: "3 Years", price: 152 },
+  ];
+  const accidentalDamageOptions = [{ label: "1 Year", price: 129 }];
+  const bundleOptions = [
+    { label: "1 + 2 Years", price: 178 },
+    { label: "2 + 3 Years", price: 230 },
+  ];
 
   return (
-    <div className="product-page">
-      {/* Images Section */}
-      <div className="product-images">
-        <img src={selectedImage} alt={product.name} className="main-image" />
-        <div className="thumbnails">
-          {product.images.map((img, i) => (
+    <div className="product-page-container">
+      {/* Left Column: Image Gallery */}
+      <div className="column image-gallery-column">
+        <div className="main-image-container">
+          <img
+            src={product.images[currentImageIndex]}
+            alt={product.name}
+            className="main-product-image"
+          />
+        </div>
+        <div className="thumbnail-gallery">
+          {product.images.map((img, index) => (
             <img
-              key={i}
+              key={index}
               src={img}
-              alt="thumb"
-              className={`thumb ${selectedImage === img ? "active" : ""}`}
-              onClick={() => setSelectedImage(img)}
+              alt={`Thumbnail ${index}`}
+              className={`thumbnail ${
+                currentImageIndex === index ? "active" : ""
+              }`}
+              onClick={() => setCurrentImageIndex(index)}
             />
           ))}
         </div>
       </div>
 
-      {/* Details Section */}
-      <div className="product-details">
-        <h2>{product.name}</h2>
-        <p>
-          <b>BRAND:</b> {product.brand} | <b>MODEL:</b> {product.model}
-        </p>
-        <p>
-          ⭐ {product.rating} ({product.reviews} Reviews)
-        </p>
+      {/* Middle Column: Product Details */}
+      <div className="column product-details-column">
+        <p className="brand">BRAND: {product.brand}</p>
+        <h1 className="product-title">{product.name}</h1>
+        <div className="reviews">
+          <span>★★★★☆</span>
+          <span> 4.6 | 31 REVIEWS</span>
+        </div>
+        <div className="delivery-info">
+          <span>Same-day to 2-day delivery</span> |{" "}
+          <span>Check availability in store</span>
+        </div>
+        <div className="description-section">
+          <h3 className="description-heading">DESCRIPTION</h3>
+          <p className="description-text">
+            {isDescriptionExpanded
+              ? product.description
+              : product.description.slice(0, 100) + "..."}
+          </p>
+          <button
+            className="expand-btn"
+            onClick={() => setIsDescriptionExpanded(!isDescriptionExpanded)}
+          >
+            {isDescriptionExpanded ? "VIEW LESS" : "VIEW FULL DESCRIPTION"}
+          </button>
+        </div>
+        <div className="loyalty-info">
+          <div className="loyalty-icon-container">
+            <span className="loyalty-icon">★</span>
+          </div>
+          <p>
+            Earn <strong>{loyaltyPoints} loyalty dots</strong> equivalent to{" "}
+            <strong>AED {loyaltyAed}</strong> when you sign-in and order
+          </p>
+        </div>
+      </div>
 
-        <div>
+      {/* Right Column: Purchase Options */}
+      <div className="column purchase-options-column">
+        <div className="price-info">
           <span className="old-price">AED {product.oldPrice}</span>
           <span className="new-price">AED {product.price}</span>
         </div>
-
-        {/* Qty + Add to Cart */}
-        <div className="qty-cart">
-          <button onClick={() => setQty(qty > 1 ? qty - 1 : 1)}>-</button>
-          <span>{qty}</span>
-          <button onClick={() => setQty(qty + 1)}>+</button>
-          <button className="add-to-cart">ADD TO CART</button>
+        <div className="quantity-selector">
+          <button
+            onClick={() => setQuantity(Math.max(1, quantity - 1))}
+            className="qty-btn"
+          >
+            -
+          </button>
+          <span className="qty-display">{quantity}</span>
+          <button
+            onClick={() => setQuantity(quantity + 1)}
+            className="qty-btn"
+          >
+            +
+          </button>
+          <span className="qty-label">QTY</span>
+        </div>
+        <button className="add-to-cart-btn">ADD TO CART</button>
+        <div className="easy-payment-plans">
+          <span>💳 Easy Payment Plans</span>
+          <p>EPP available for order over AED 1,000</p>
         </div>
 
-        <p>{product.description}</p>
-
-        <div className="warranty">
-          <h4>Protect your purchase</h4>
-          <p>Free 1-year manufacturer's warranty</p>
-          <div className="warranty-options">
-            <button>1 Year AED 67</button>
-            <button>2 Years AED 100</button>
-            <button>3 Years AED 152</button>
+        {/* Warranty & Protection */}
+        <div className="protection-section">
+          <h3>Protect your purchase</h3>
+          <div className="warranty-option">
+            <p>Free 1-year manufacturer's warranty</p>
           </div>
-          <div className="warranty-options">
-            <button>Accidental Damage 1 Year AED 129</button>
+          <div className="warranty-section-item">
+            <p>Protect your new device with AppleCare+</p>
+            <div className="applecare-option">
+              <span>AppleCare+</span>
+              <span>AED 119</span>
+            </div>
           </div>
-          <div className="warranty-options">
-            <button>Extended + Accidental (1+2 Years) AED 178</button>
-            <button>Extended + Accidental (2+3 Years) AED 230</button>
+          <div className="option-row">
+            <span className="option-label">Extended Warranty</span>
+            <div className="option-group">
+              {extendedWarrantyOptions.map((option) => (
+                <button
+                  key={option.label}
+                  onClick={() => setSelectedWarranty(option.label)}
+                  className={`warranty-btn ${
+                    selectedWarranty === option.label ? "selected" : ""
+                  }`}
+                >
+                  <span>{option.label}</span>
+                  <span>AED {option.price}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="option-row">
+            <span className="option-label">Accidental Damage</span>
+            <div className="option-group">
+              {accidentalDamageOptions.map((option) => (
+                <button
+                  key={option.label}
+                  onClick={() => setSelectedAccidental(option.label)}
+                  className={`warranty-btn ${
+                    selectedAccidental === option.label ? "selected" : ""
+                  }`}
+                >
+                  <span>{option.label}</span>
+                  <span>AED {option.price}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="option-row">
+            <span className="option-label">Extended + Accidental Damage</span>
+            <div className="option-group">
+              {bundleOptions.map((option) => (
+                <button
+                  key={option.label}
+                  onClick={() => setSelectedBundle(option.label)}
+                  className={`warranty-btn ${
+                    selectedBundle === option.label ? "selected" : ""
+                  }`}
+                >
+                  <span>{option.label}</span>
+                  <span>AED {option.price}</span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default ProductPage;

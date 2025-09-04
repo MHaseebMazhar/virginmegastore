@@ -33,6 +33,10 @@ header {
   width: 45%;
   height: 5vh;
 }
+.search-bar .icon {
+  font-size: 16px;  /* ya apni requirement k mutabiq */
+  color: #555;
+}
 
 .search-bar input {
   border: none;
@@ -53,6 +57,10 @@ header {
 .header-icons {
   display: flex;
   gap: 15px;
+}
+.header-icons .icon {
+  height: 25px;
+  width: auto;
 }
 
 /* Navigation Bar */
@@ -103,4 +111,20 @@ header {
   color: #d00;          /* red highlight */
   border-bottom: 2px solid #d00;
   padding-bottom: 4px;
+}
+.cart-icon-container {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
 }

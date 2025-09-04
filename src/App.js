@@ -1,9 +1,9 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { CartProvider } from './Components/DealPages/CartContext/CartContext';
 import AllPages from './Components/AllPages/AllPages';
 import Header from './Components/DealPages/Header/Header';
-import Deals from './Components/DealPages/Deals/Deals';
 import StationeryDeals from './Components/DealPages/StationeryDeals/StationeryDeals';
 import SaveBigMobile from './Components/DealPages/SaveBigMobile/SaveBigMobile';
 import GamingDeals from './Components/DealPages/GamingDeals/GamingDeals';
@@ -24,51 +24,38 @@ import Footer from './Components/DealPages/Footer/Footer';
 function App() {
   return (
     <BrowserRouter>
-      <Header />
+      {/* ✅ Wrap everything inside CartProvider */}
+      <CartProvider>
+        <Header />
         <AllPages />
-      <Routes>
-     <Route path="/deals" element={<>, <StationeryDeals />
-          ,  <SaveBigMobile />
-          ,  <GamingDeals />
-          ,  <PCGamingDeals />
-          ,  <LifeStyleDeals />
-          ,  <Trending />
-           , <TechDeals />
-           , <BestTechDeals />
-          ,  <LatestDeals />
-           , <CultureDeals />
-          ,  <PopularDeals />
-          ,  <BestSellingMusicDeals />
-           , <NewMusicalInstrument />
-           , <Buy2Get1 />
-           , <BestSellingBooksDeals />
-            <ClearanceDeals /></>} />
-        {/* Home route can show all sections or a landing page */}
-        <Route path="/" element={
-          <>
-            <Deals />
-            <StationeryDeals />
-            <SaveBigMobile />
-            <GamingDeals />
-            <PCGamingDeals />
-            <LifeStyleDeals />
-            <Trending />
-            <TechDeals />
-            <BestTechDeals />
-            <LatestDeals />
-            <CultureDeals />
-            <PopularDeals />
-            <BestSellingMusicDeals />
-            <NewMusicalInstrument />
-            <Buy2Get1 />
-            <BestSellingBooksDeals />
-            <ClearanceDeals />
-          </>
-        } />
-      </Routes>
-      <Footer />
+        <Routes>
+          <Route
+            path="/deals"
+            element={
+              <>
+                <StationeryDeals />
+                <SaveBigMobile />
+                <GamingDeals />
+                <PCGamingDeals />
+                <LifeStyleDeals />
+                <Trending />
+                <TechDeals />
+                <BestTechDeals />
+                <LatestDeals />
+                <CultureDeals />
+                <PopularDeals />
+                <BestSellingMusicDeals />
+                <NewMusicalInstrument />
+                <Buy2Get1 />
+                <BestSellingBooksDeals />
+                <ClearanceDeals />
+              </>
+            }
+          />
+        </Routes>
+        <Footer />
+      </CartProvider>
     </BrowserRouter>
   );
 }
-
 export default App;

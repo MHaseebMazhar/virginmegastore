@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36.043" height="25.163" viewBox="0 0 36.043 25.163">
+  <g id="Group_6370" data-name="Group 6370" transform="translate(6712.104 10378.655)">
+    <g id="card_icon" data-name="card icon" transform="translate(-6750.65 -10873.128)">
+      <rect id="Rectangle_31" data-name="Rectangle 31" width="27.883" height="19.682" rx="1.824" transform="translate(39.546 495.473)" fill="#fff" stroke="#e10a0a" stroke-miterlimit="10" stroke-width="2"/>
+      <line id="Line_1" data-name="Line 1" x2="27.883" transform="translate(39.546 500.178)" fill="none" stroke="#e10a0a" stroke-miterlimit="10" stroke-width="2"/>
+      <line id="Line_2" data-name="Line 2" x2="27.883" transform="translate(39.546 504.175)" fill="none" stroke="#e10a0a" stroke-miterlimit="10" stroke-width="2"/>
+    </g>
+    <g id="Group_6369" data-name="Group 6369" transform="translate(-297.383 -610.813)">
+      <circle id="Ellipse_886" data-name="Ellipse 886" cx="7.161" cy="7.161" r="7.161" transform="translate(-6393 -9757)" fill="#fff"/>
+      <path id="Icon_open-clock" data-name="Icon open-clock" d="M7.16,0a7.16,7.16,0,1,0,7.16,7.16A7.181,7.181,0,0,0,7.16,0Zm0,1.79A5.37,5.37,0,1,1,1.79,7.16,5.363,5.363,0,0,1,7.16,1.79ZM6.265,3.58V7.554l.286.233.895.895.609.68L9.344,8.073l-.68-.609-.609-.609V3.616H6.265Z" transform="translate(-6392.998 -9756.998)" fill="#e10a0a"/>
+    </g>
+  </g>
+</svg>
