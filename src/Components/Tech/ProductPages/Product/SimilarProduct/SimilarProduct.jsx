@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./SimilarProduct.css";
+import "./SimilarProduct.css"; // custom css
 
 const similarProducts = [
   {
@@ -35,20 +35,14 @@ const similarProducts = [
     price: 79,
     image: "/1.jpg",
   },
-  {
-    id: 6,
-    name: "Apple AirPods Pro (2nd Gen) with MagSafe Case (USB-C)",
-    price: 999,
-    image: "/1.jpg",
-  },
 ];
 
 const SimilarProduct = () => {
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
-    slidesToShow: 5,  // ✅ exactly 5 ek sath show
+    slidesToShow: 5,   // ✅ ab 5 ek sath dikhain gey
     slidesToScroll: 1,
     arrows: true,
     responsive: [
@@ -67,7 +61,7 @@ const SimilarProduct = () => {
           <div key={product.id} className="product-card">
             <img src={product.image} alt={product.name} />
             <span className="brand">APPLE</span>
-            <h3 className="product-name">{product.name}</h3>
+            <h3>{product.name}</h3>
             <p className="price">AED {product.price}</p>
           </div>
         ))}

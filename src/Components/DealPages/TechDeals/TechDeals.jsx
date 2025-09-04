@@ -16,11 +16,6 @@ export default function TechDeals() {
 
   return (
     <div className="deals-container">
-      {/* Breadcrumb */}
-      <div className="breadcrumb">
-        Tech / Deals
-      </div>
-
       {/* Categories */}
       <h3 className="section-title">Tech Deals</h3>
 

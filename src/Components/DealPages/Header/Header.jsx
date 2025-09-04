@@ -1,9 +1,13 @@
-import React from "react";
+import { useCart } from "../../DealPages/CartContext/CartContext"; // ✅ correct path
+import React from "react";  
 import "./Header.css";
 import { FaSearch } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 export default function Header() {
+  const { cartCount } = useCart(); // ✅ hook
+
+  // ✅ menu items yahan define karo
   const menuItems = [
     { label: "Deals", path: "/deals" },
     { label: "Tech", path: "/tech" },
@@ -31,14 +35,21 @@ export default function Header() {
         <div className="logo">
           <img src="/Virgin-Red-Logo.svg" alt="Virgin Megastore" />
         </div>
+
         <div className="search-bar">
           <input type="text" placeholder="I'm looking for" />
           <FaSearch className="icon" />
         </div>
+
         <div className="header-icons">
           <img src="user.png" alt="Circle" className="icon" />
           <img src="icon-chat-help.svg" alt="Help" className="icon" />
-          <img src="icon-cart.svg" alt="Cart" className="icon" />
+
+          {/* Cart with count */}
+          <div className="cart-icon-container">
+            <img src="icon-cart.svg" alt="Cart" className="icon" />
+            {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+          </div>
         </div>
       </div>
 
